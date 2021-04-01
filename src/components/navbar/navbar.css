@@ -1,0 +1,170 @@
+
+/*
+
+Source
+
+https://medium.com/creative-technology-concepts-code/responsive-mobile-dropdown-navigation-using-css-only-7218e4498a99
+ */
+
+
+/*         N A V B A R    C S S          */
+
+/*   CSS Variables   */
+:root{
+    --main-colour: #7f8fa6;
+    --second-colour: #718093;
+    --text-colour: #353b48
+}
+
+
+/* Your main page content, should be enough so that content is not hidden */
+.content{
+    margin-top: 8vh;
+}
+
+
+/*
+
+                        ** DISCLAIMER **
+
+    BELOW SOURCE IS ABOVE
+
+    THIS CONTENT IS NOT MINE, I HAVE MODIFIED IT SO THAT IT WORKS
+    WITH THE VARIABLES STATED ABOVE .
+
+*/
+
+/*  The nav shape */
+.header {
+    background-color: var(--main-colour);
+    box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    z-index: 3;
+    top: 0;
+}
+
+/* The nav links' organisation*/
+.header ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow: hidden;
+    background-color: var(--main-colour);;
+}
+
+/* The Nav links */
+.header li a {
+    color: var(--text-colour);
+    display: block;
+    padding: 20px 20px;
+    border-right: 1px solid var(--main-colour);;
+    text-decoration: none;
+}
+
+/* What the links will do when you hover */
+/* At the moment  */
+.header li a:hover {
+    transition: 1s;
+    background-color: var(--second-colour);;
+}
+
+
+/* The Brand's Logo, this is text but could be changed to an icon or image */
+.header .logo {
+    color: var(--text-colour);
+    display: block;
+    float: left;
+    font-size: 2em;
+    padding: 10px 20px;
+    text-decoration: none;
+}
+
+/* The child of the menu */
+.header .menu {
+    clear: both;
+    max-height: 0;
+    transition: max-height .5s ease-out;
+}
+
+/*Burger icon */
+.header .menu-icon {
+    cursor: pointer;
+    display: inline-block;
+    float: right;
+    padding: 28px 20px;
+    position: relative;
+    user-select: none;
+}
+/*Burger turns into X*/
+.header .menu-icon .navicon {
+    background: #333;
+    display: block;
+    height: 2px;
+    position: relative;
+    transition: background .2s ease-out;
+    width: 18px;
+
+}
+
+
+.header .menu-icon .navicon:before,
+.header .menu-icon .navicon:after {
+    background: #333;
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    transition: all .2s ease-out;
+    width: 100%;
+}
+
+.header .menu-icon .navicon:before {
+    top: 5px;
+}
+
+.header .menu-icon .navicon:after {
+    top: -5px;
+}
+
+.header .menu-btn {
+    display: none;
+}
+
+.header .menu-btn:checked ~ .menu {
+    max-height: 240px;
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon {
+    background: transparent;
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon:before {
+    transform: rotate(-45deg);
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon:after {
+    transform: rotate(45deg);
+}
+
+.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+    top: 0;
+}
+
+@media (min-width: 48em) {
+    .header li {
+        float: left;
+    }
+    .header li a {
+        padding: 20px 30px;
+    }
+    .header .menu {
+        clear: none;
+        float: right;
+        max-height: none;
+    }
+    .header .menu-icon {
+        display: none;
+    }
+}
